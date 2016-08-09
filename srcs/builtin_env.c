@@ -26,13 +26,13 @@ static void print_env(t_env *list)
 	}
 }
 
-int builtin_env(char **command, t_env *env)
+int builtin_env(char **command, t_env **env)
 {
 	(void)command;
 	printf("%s\n", __func__);
-	if (env != NULL)
+	if (env && *env)
 	{
-		print_env(env);
+		print_env(*env);
 		return (0);
 	}
 	else

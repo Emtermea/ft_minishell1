@@ -18,18 +18,19 @@
 int		main(int ac, char **av, char **envp)
 {
 	char	*line;
-	t_env *env;
+	t_env 	*env;
 
 	(void)ac;
 	(void)av;
-	env = env_to_list(envp);
+	env = NULL;
+	env_to_list(&env, envp);
 	while ("Manue est trop geniale\n")
 	{
 		ft_print_color(BLUE, "PROMPT A DEUX BALLES$> ", 1);
 		line = ft_strtrim(stdin_read());
 		if (line)
 		{
-			parse_command(line, env);
+			parse_command(line, &env);
 			ft_strdel(&line);
 		}
 	}

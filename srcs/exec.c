@@ -23,7 +23,7 @@ static t_builtin builtins[] = {
 	{NULL, NULL}
 };
 
-void exec_builtin(char **command, t_env *env)
+void exec_builtin(char **command, t_env **env)
 {
 	int i;
 

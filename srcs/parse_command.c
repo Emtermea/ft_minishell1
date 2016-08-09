@@ -45,15 +45,15 @@ static int is_binary(char const *line, t_env *env)
 	return (0);
 }
 
-void parse_command(char const *line, t_env *env)
+void parse_command(char const *line, t_env **env)
 {
 	char **command_tab;
 
 	command_tab = ft_strsplit(line, ' ');
 	if (is_builtin(command_tab[0]) == 1)
 		exec_builtin(command_tab, env);
-	else if (is_binary(command_tab[0], env) == 1)
-		exec_binary(command_tab, env);
+	else if (is_binary(command_tab[0], *env) == 1)
+		exec_binary(command_tab, *env);
 	else
 		ft_putendl_fd(ERR_CMD, 2);
 	ft_free_array(&command_tab);

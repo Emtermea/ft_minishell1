@@ -34,18 +34,17 @@ t_env	*create_link(char **env)
 	return (link);
 }
 
-t_env	*list_add_next(t_env *env, t_env *link)
+void 	list_add_next(t_env **env, t_env *link)
 {
 	t_env *start;
 
-	start = env;
-	if (env)
+	start = *env;
+	if (start)
 	{
-		while (env->next)
-			env = env->next;
-		env->next = link;
+		while (start->next)
+			start = start->next;
+		start->next = link;
 	}
 	else
-		start = link;
-	return start;
+		(*env) = link;
 }

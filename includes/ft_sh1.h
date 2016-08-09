@@ -30,7 +30,7 @@ typedef struct  s_env
 typedef struct	s_builtin
 {
 	char	*str;
-	int		(*f)(char **command, t_env *env);
+	int		(*f)(char **command, t_env **env);
 }				t_builtin;
 
 # define ERR_CMD "command not found"
@@ -40,31 +40,31 @@ typedef struct	s_builtin
 /*
 ** PARSE / EXEC
 */
-void parse_command(char const *line, t_env *env);
-void exec_builtin(char **command, t_env *env);
+void parse_command(char const *line, t_env **env);
+void exec_builtin(char **command, t_env **env);
 void exec_binary(char **command, t_env *env);
 
 /*
 ** BUILTINS
 */
-int 		builtin_env(char **command, t_env *env);
-int 		builtin_set_env(char **command, t_env *env);
-int 		builtin_unset_env(char **command, t_env *env);
-int 		builtin_echo(char **command, t_env *env);
-int 		builtin_cd(char **command, t_env *env);
-int 		builtin_pwd(char **command, t_env *env);
-int 		builtin_exit(char **command, t_env *env);
+int 		builtin_env(char **command, t_env **env);
+int 		builtin_set_env(char **command, t_env **env);
+int 		builtin_unset_env(char **command, t_env **env);
+int 		builtin_echo(char **command, t_env **env);
+int 		builtin_cd(char **command, t_env **env);
+int 		builtin_pwd(char **command, t_env **env);
+int 		builtin_exit(char **command, t_env **env);
 
 /*
 ** LIST
 */
-t_env	*list_add_next(t_env *start, t_env *link);
+void	list_add_next(t_env **start, t_env *link);
 t_env	*create_link(char **env);
 
 /*
 ** ENV
 */
-t_env	*env_to_list(char **env);
+void 	env_to_list(t_env **env, char **env_tab);
 
 /*
 ** MISC

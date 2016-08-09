@@ -12,33 +12,32 @@
 
 #include "ft_sh1.h"
 
-int 	builtin_set_env(char **command, t_env *env)
+int 	builtin_set_env(char **command, t_env **env)
 {
 	printf("%s\n", __func__);
 	t_env *tmp;
 
-	tmp = env;
-    if (env)
+	tmp = *env;
+    if (tmp)
     {
         if (command && command[0])
         {
-            while (env)
+            while (tmp)
             {
-                if (!ft_strcmp(env->key, command[0]))
+                if (!ft_strcmp(tmp->key, command[0]))
                 {
-                  	ft_strdel(&env->key);
-                    env->key = ft_strdup(command[0]);
+                  	ft_strdel(&tmp->key);
+                    tmp->key = ft_strdup(command[0]);
                     if (!command[1])
-                      env->value = ft_strdup("");
+                      tmp->value = ft_strdup("");
                     else
-                      env->value = ft_strdup(command[1]);
+                      tmp->value = ft_strdup(command[1]);
                     return (0);
                 }
-                env = env->next;
+                tmp = tmp->next;
             }
             list_add_next(env, create_link(&command[1]));
         }
     }
-
 	return (0);
 }

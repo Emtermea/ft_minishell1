@@ -12,7 +12,7 @@
 
 #include "ft_sh1.h"
 
-int	builtin_cd(char **command, t_env *env)
+int	builtin_cd(char **command, t_env **env)
 {
 	printf("%s\n", __func__);
 	(void)command;

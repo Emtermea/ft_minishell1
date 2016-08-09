@@ -29,21 +29,18 @@ void	ft_free_array(char ***array)
 	*array = NULL;
 }
 
-t_env	*env_to_list(char **env)
+void 	env_to_list(t_env **env, char **env_tab)
 {
-	t_env *start;
 	char **tab;
 
-	start = NULL;
-	if (env)
+	if (env_tab)
 	{
-		while (*env)
+		while (*env_tab)
 		{
-			tab = ft_strsplit(*env, '=');
-			start = list_add_next(start, create_link(tab));
+			tab = ft_strsplit(*env_tab, '=');
+			list_add_next(env, create_link(tab));
 			ft_free_array(&tab);
-			env++;
+			env_tab++;
 		}
 	}
-	return (start);
 }

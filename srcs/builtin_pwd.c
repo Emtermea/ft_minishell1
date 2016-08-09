@@ -12,17 +12,17 @@
 
 #include "ft_sh1.h"
 
-int	builtin_pwd(char **command, t_env *env)
+int	builtin_pwd(char **command, t_env **env)
 {
+	char *pwd;
 	printf("%s\n", __func__);
-
-	size_t	size;
-	char	*buf;
-
 	(void)command;
 	(void)env;
-	size = 
-	buf = (char *)malloc((size_t)size));
-	getcwd(buf, size);
+	if ((pwd = getcwd(NULL, 0)) != NULL)
+	{
+		ft_putendl(pwd);
+		ft_strdel(&pwd);
+		return (0);
+	}
 	return (1);
 }
