@@ -12,9 +12,9 @@
 
 #include "ft_sh1.h"
 
-static	size_t	ft_strlen_tab(char **command)
+static size_t	ft_strlen_tab(char **command)
 {
-	size_t	size;
+	size_t		size;
 
 	size = 0;
 	while (command[size])
@@ -22,37 +22,36 @@ static	size_t	ft_strlen_tab(char **command)
 	return (size);
 }
 
-int 	builtin_set_env(char **command, t_env **env)
+int				builtin_set_env(char **command, t_env **env)
 {
-	printf("%s\n", __func__);
-	t_env *tmp;
+	t_env		*tmp;
 
 	tmp = *env;
-    if (tmp)
-    {
-        if (command && command[0])
-        {
+	if (tmp)
+	{
+		if (command && command[0])
+		{
 			if (ft_strlen_tab(command) <= 3)
 			{
 				while (tmp)
-            	{
-                	if (!ft_strcmp(tmp->key, command[1]))
-                	{
-                  		ft_strdel(&tmp->key);
-                    	tmp->key = ft_strdup(command[1]);
-                    	if (!command[2])
-                      	tmp->value = ft_strdup("");
-                    	else
-                      	tmp->value = ft_strdup(command[2]);
-                    	return (0);
-                	}
-                	tmp = tmp->next;
-            	}
+				{
+					if (!ft_strcmp(tmp->key, command[1]))
+					{
+						ft_strdel(&tmp->key);
+						tmp->key = ft_strdup(command[1]);
+						if (!command[2])
+							tmp->value = ft_strdup("");
+						else
+							tmp->value = ft_strdup(command[2]);
+						return (0);
+					}
+					tmp = tmp->next;
+				}
 				list_add_next(env, create_link(&command[1]));
 			}
 			else
 				ft_putendl_fd(ERR_ARG, 2);
-        }
-    }
+		}
+	}
 	return (1);
 }
