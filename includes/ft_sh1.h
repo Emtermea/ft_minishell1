@@ -36,6 +36,7 @@ typedef struct	s_builtin
 # define ERR_CMD "command not found"
 # define ERR_BUILTIN "error exec builtin"
 # define ERR_SETENV "setenv fail"
+# define ERR_ARG "setenv: Too many arguments."
 
 /*
 ** PARSE / EXEC
