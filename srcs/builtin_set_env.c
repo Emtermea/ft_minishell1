@@ -12,16 +12,6 @@
 
 #include "ft_sh1.h"
 
-static size_t	ft_strlen_tab(char **command)
-{
-	size_t		size;
-
-	size = 0;
-	while (command[size])
-		size++;
-	return (size);
-}
-
 int				builtin_set_env(char **command, t_env **env)
 {
 	t_env		*tmp;

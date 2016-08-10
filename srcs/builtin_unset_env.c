@@ -15,16 +15,22 @@
 int 	builtin_unset_env(char **command, t_env **env)
 {
 	t_env	*tmp;
+	int		i;
 
 	tmp = *env;
+	i = 0;
 	printf("%s\n", __func__);
 	if (tmp)
 	{
-		if (!ft_strcmp(tmp->key, command[0]))
-			tmp = tmp->next;
+		if (!ft_strcmp(tmp->key, command[1]))
+		{
+			(*env) = (*env)->next;
+		//	tmp = tmp->next;
+			return (0);
+		}
 		while (tmp->next)
 		{
-			if (!ft_strcmp(tmp->next->key, command[0]))
+			if (!ft_strcmp(tmp->next->key, command[1]))
 			{
 				tmp->next = tmp->next->next;
 				return (0);
@@ -34,3 +40,5 @@ int 	builtin_unset_env(char **command, t_env **env)
 	}
 	return (1);
 }
+
+gerer obligatoirement l'infinite d'arg comme dans tcsh

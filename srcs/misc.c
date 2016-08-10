@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_to_list.c                                      :+:      :+:    :+:   */
+/*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emtermea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/08 19:48:20 by emtermea          #+#    #+#             */
-/*   Updated: 2016/04/08 19:48:21 by emtermea         ###   ########.fr       */
+/*   Created: 2016/08/10 20:49:42 by emtermea          #+#    #+#             */
+/*   Updated: 2016/08/10 20:49:44 by emtermea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh1.h"
 
-void 	env_to_list(t_env **env, char **env_tab)
+size_t			ft_strlen_tab(char **command)
 {
-	char **tab;
+	size_t		size;
 
-	if (env_tab)
+	size = 0;
+	while (command[size])
+		size++;
+	return (size);
+}
+
+void	ft_free_array(char ***array)
+{
+	char **tmp;
+
+	tmp = *array;
+	if (tmp)
 	{
-		while (*env_tab)
+		while (*tmp)
 		{
-			tab = ft_strsplit(*env_tab, '=');
-			list_add_next(env, create_link(tab));
-			ft_free_array(&tab);
-			env_tab++;
+			free(*tmp);
+			tmp++;
 		}
+		free(*array);
 	}
+	*array = NULL;
 }

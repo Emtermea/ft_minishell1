@@ -33,6 +33,7 @@ SRC = 	main.c			\
 		builtin_exit.c		\
 		parse_command.c			\
 		exec.c			\
+		misc.c			\
 
 OBJ = $(SRC:.c=.o)
 

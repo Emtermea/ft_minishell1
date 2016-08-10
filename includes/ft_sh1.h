@@ -72,5 +72,6 @@ void 	env_to_list(t_env **env, char **env_tab);
 */
 char	*stdin_read(void);
 void	ft_free_array(char ***array);
+size_t	ft_strlen_tab(char **tab);
 
 #endif
