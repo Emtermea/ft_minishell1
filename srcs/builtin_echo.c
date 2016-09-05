@@ -43,9 +43,8 @@
 
 int	builtin_echo(char **command, t_env **env)
 {
-	printf("%s\n", __func__);
 	(void)env;
-	int	i;
+	int		i;
 	size_t	size;
 
 	i = 1;

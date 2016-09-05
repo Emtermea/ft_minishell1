@@ -15,7 +15,6 @@
 int	builtin_pwd(char **command, t_env **env)
 {
 	char *pwd;
-	printf("%s\n", __func__);
 	(void)command;
 	(void)env;
 	if ((pwd = getcwd(NULL, 0)) != NULL)
