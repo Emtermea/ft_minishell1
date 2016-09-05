@@ -12,7 +12,7 @@
 
 #include "ft_sh1.h"
 
-size_t			ft_strlen_tab(char **command)
+size_t	ft_strlen_tab(char **command)
 {
 	size_t		size;
 
