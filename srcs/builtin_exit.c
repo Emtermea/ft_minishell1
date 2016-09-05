@@ -14,8 +14,12 @@
 
 int	builtin_exit(char **command, t_env **env)
 {
-	printf("%s\n", __func__);
 	(void)command;
 	(void)env;
+	if (command)
+	{
+		exit(0);
+		return (0);
+	}
 	return (1);
 }
