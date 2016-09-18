@@ -36,7 +36,7 @@ typedef struct	s_builtin
 # define ERR_CMD "command not found"
 # define ERR_BUILTIN "error exec builtin"
 # define ERR_SETENV "setenv fail"
-# define ERR_ARG "setenv: Too many arguments."
+# define ERR_ARG "Too many arguments."
 # define ERR_PERM "Permission denied"
 # define ERR_EXIST "No such file or directory."
 

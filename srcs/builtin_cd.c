@@ -12,7 +12,7 @@
 
 #include "ft_sh1.h"
 
-static int	ft_check_access(char *path)
+/*static int	ft_check_access(char *path)
 {
 	if (path)
 	{
@@ -27,19 +27,38 @@ static int	ft_check_access(char *path)
 			ft_putendl_fd(ERR_EXIST, 2);
 	}
 	return (-1);
-}
+}*/
 
 
 int	builtin_cd(char **command, t_env **env)
 {
 	printf("%s\n", __func__);
+	// t_env	tmp;
 	(void)env;
-	if (command)
-	{
-		if (ft_check_access(command[1]) == 0)
-		{
+	int	ret;
 
+	ret = 0;
+	if (command && command[0])
+	{
+		if (ft_strlen_tab(command) <= 2)
+		{
+			ret = chdir(command[1]);
+			char *pwd = getcwd(NULL, 0);
+			char *tmp[] = {
+				"setenv",
+				"PWD",
+				pwd,
+				NULL
+		};
+
+			if (!ret)
+			{
+				builtin_set_env(tmp, env);
+				return (0);
+			}
 		}
+		else
+			ft_putendl_fd(ERR_ARG, 2);
 	}
 	return (1);
 }
